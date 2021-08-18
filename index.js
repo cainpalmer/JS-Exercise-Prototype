@@ -83,9 +83,9 @@ function Baby() {
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
+  1. Window Binding 
+  2. Implicit Binding 
+  3. Explicit Binding 
   4. 
 */
 
