@@ -39,15 +39,27 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-  
+function Person(attributes){
+  this.stomach = [];
+  this.name = attributes.name;
+  this.age = attributes.age;
 }
 
+Person.prototype.eat = function(someFood){
+  if(this.stomach.length <= 10){
+    this.stomach.push(someFood);
+  }else{
+    this.stomach;
+  }
+}
 
+Person.prototype.poop = function(){
+  this.stomach = [];
+}
 
-
-
-
+Person.prototype.toString = function(){
+  return `${this.name}, ${this.age}`;
+}
 
 /*
   TASK 2
@@ -63,9 +75,17 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-  
+
+function Car(attributes){
+  this.model = attributes.model;
+  this.milesPerGallon = attributes.milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 }
+Car.prototype.fill = function(gallons){
+  this.tank += gallons;
+}
+
 
 
 /*
@@ -75,18 +95,27 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
+
+
+function Baby(attributes){
+  Person.call(this, attributes);
+  this.favoriteToy = attributes.favoriteToy;
+}
+
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function(){
+  return `Playing with ${this.toy}`;
 }
 
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. Window Binding 
-  2. Implicit Binding 
-  3. Explicit Binding 
-  4. 
+  1. Window Binding defaults the window to strict code and labels code as undefined if no rules apply
+  2. Implicit Binding refers to the left of a dot when a function is invoked, mainly to identify a 'this' property.
+  3. Explicit Binding calls, applies, or binds functions to newly created objects.
+  4. New Binding can be written in two ways to invoke a contructor function using a 'this' property to a newly created object.
 */
 
 
